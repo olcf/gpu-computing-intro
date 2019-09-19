@@ -13,7 +13,6 @@ Verónica G. Melesse Vergara, Oak Ridge National Laboratory
 
 ### Materials
 - Slides for this presentation can be found [https://tinyurl.com/tapia2019GPUslides](https://tinyurl.com/tapia2019GPUslides).
-- Results from attendees will be available at [https://tinyurl.com/tapia2019gpu](https://tinyurl.com/tapia2019gpu).
 
 ### References
 - R. Farber, [Parallel Programming with OpenACC](https://www.elsevier.com/books/parallel-programming-with-openacc/farber/978-0-12-410397-9).
