@@ -3,13 +3,15 @@ CCOMP = pgcc
 CFLAGS = -mp -Minfo=acc -ta=tesla:cc70 -fast
 CFLAGS = -qreport -Ofast -L${OLCF_CUDA_ROOT}/lib64 -lcudart
 CCOMP = xlc
-CFLAGS =   -qhot -qreport -L${OLCF_CUDA_ROOT}/lib64 -lcudart
+CFLAGS =   -qhot -qreport -L${OLCF_CUDA_ROOT}/lib64 -lcudart 
 CCOMP0  = xlc
 CFLAGS0  = -qhot -qreport
+
+all: run run0 rund rung
 run: vector_addition.o
 	$(CCOMP) $(CFLAGS) vector_addition.o -o run
 run0: omp_vector_addition.o
-	$(CCOMP) $(CFLAGS) omp_vector_addition.o -o run0
+	$(CCOMP) $(CFLAGS) -qsmp=omp omp_vector_addition.o -o run0
 
 rund: dvector_addition.o
 	$(CCOMP0) $(CFLAGS0) dvector_addition.o -o rund
