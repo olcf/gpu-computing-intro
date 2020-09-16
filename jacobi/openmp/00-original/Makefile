@@ -1,6 +1,6 @@
-CCOMP = xlc-gpu
-CFLAGS = -qsmp=omp -qoffload -qtgtarch=sm_70  -qhot -qreport -lcudart
-CFLAGS =  -qreport -Ofast -lcudart
+CCOMP = xlc 
+CFLAGS = -qsmp=omp -qoffload -qtgtarch=sm_70  -qhot -qreport -L${OLCF_CUDA_ROOT}/lib64 -lcudart
+CFLAGS =  -qreport -Ofast -L${OLCF_CUDA_ROOT}/lib64 -lcudart
 run: laplace2d.o
 	$(CCOMP) $(CFLAGS) laplace2d.o -o run
 laplace2d.o: laplace2d.c
