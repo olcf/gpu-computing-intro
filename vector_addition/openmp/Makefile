@@ -1,9 +1,9 @@
 CCOMP = pgcc
 #CFLAGS = -acc -Minfo=acc -ta=tesla:cc70 -fast
 CFLAGS = -mp -Minfo=acc -ta=tesla:cc70 -fast
-CFLAGS = -qreport -Ofast -lcudart
-CCOMP = xlc-gpu
-CFLAGS =   -qhot -qreport -lcudart
+CFLAGS = -qreport -Ofast -L${OLCF_CUDA_ROOT}/lib64 -lcudart
+CCOMP = xlc
+CFLAGS =   -qhot -qreport -L${OLCF_CUDA_ROOT}/lib64 -lcudart
 CCOMP0  = xlc
 CFLAGS0  = -qhot -qreport
 run: vector_addition.o
