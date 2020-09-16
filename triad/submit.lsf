@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#BSUB -P GEN145
+#BSUB -W 10
+#BSUB -nnodes 1
+#BSUB -J vector-triad
+#BSUB -o output.%J
+#BSUB -e output.%J
+
+jsrun --smpiargs="none" -n1 -c1 -g1 -a1 ./run
+jsrun --smpiargs="none" -n1 -c1 -g1 -a1 ./run1
+jsrun --smpiargs="none" -n1 -c1 -g1 -a1 nvprof ./run1

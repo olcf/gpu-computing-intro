@@ -1,0 +1,174 @@
+1586-542 (I) Loop (loop index 1 with nest-level 0 and iteration count 110485760) at triad.c <line 34> was SIMD vectorized.
+1586-542 (I) Loop (loop index 2 with nest-level 0 and iteration count 110485760) at triad.c <line 21> was SIMD vectorized.
+1586-549 (I) Loop (loop index 3) at triad.c <line 34> was not SIMD vectorized because a data dependence  prevents SIMD vectorization.
+1586-549 (I) Loop (loop index 3) at triad.c <line 34> was not SIMD vectorized because a data dependence  prevents SIMD vectorization.
+1586-549 (I) Loop (loop index 4) at triad.c <line 21> was not SIMD vectorized because a data dependence  prevents SIMD vectorization.
+1586-543 (I) <SIMD info> Total number of the innermost loops considered <"4">. Total number of the innermost loops SIMD vectorized <"2">.
+    10 |  int main()
+    15 |  {
+            A = malloc(883886080ull);
+    16 |    B = malloc(883886080ull);
+    17 |    C = malloc(883886080ull);
+            if (!1) goto lab_18;
+            if (!((long long) C + 883886072ll < (long long) A | (long long) A + 883886072ll < (long long) C)) goto lab_14;
+    21 |    if (!1) goto lab_3;
+            $_$CIV2 = (long long) 0;
+            do {   /* id=2 guarded */ /* ~1 */ 
+              /* region = 26 */
+              /* bump-normalized */
+              /* independent */
+    23 |      __vec_be_xstd2(<double2>(1.000,1.000),0,((char *)A + (8ll)*($_$CIV2 * 2ll)))
+    24 |      __vec_be_xstd2(<double2>(2.000,2.000),0,((char *)C + (8ll)*($_$CIV2 * 2ll)))
+    21 |      $_$CIV2 = $_$CIV2 + 1ll;
+            } while ((unsigned long long) $_$CIV2 < 55242880ull);    /* ~1 */
+          lab_3:
+            goto lab_15;
+          lab_14:
+          lab_18:
+            if (!1) goto lab_17;
+            $_$CIV0 = 0ll;
+            do {   /* id=4 guarded */ /* ~16 */ 
+              /* region = 29 */
+              /* bump-normalized */
+    23 |      A[$_$CIV0] =  1.0000000000000000E+000;
+    24 |      C[$_$CIV0] =  2.0000000000000000E+000;
+    21 |      $_$CIV0 = $_$CIV0 + 1ll;
+            } while ((unsigned long long) $_$CIV0 < 110485760ull);    /* ~16 */
+          lab_17:
+          lab_15:
+    27 |    gettimeofday(&start_time,NULL);
+            if (!1) goto lab_13;
+            if (!(((long long) C + 883886072ll < (long long) A | (long long) A + 883886072ll < (long long) C) & ((long long) B + 883886072ll < (long long) A | (long long) A + 883886072ll < (long long) B))) goto lab_9;
+    34 |    if (!1) goto lab_6;
+            $_$CIV3 = (long long) 0;
+            do {   /* id=1 guarded */ /* ~4 */ 
+              /* region = 27 */
+              /* bump-normalized */
+              /* independent */
+    36 |      $_$vOpnd.slp0 = __vec_be_xld2(0,((char *)B + (8ll)*($_$CIV3 * 2ll)));
+              $_$vOpnd.slp1 = __vec_be_xld2(0,((char *)C + (8ll)*($_$CIV3 * 2ll)));
+              $_$vTemp2 = (<double2>) vec_madd(<double2>(10.000,10.000),$_$vOpnd.slp1,$_$vOpnd.slp0);
+              __vec_be_xstd2($_$vTemp2,0,((char *)A + (8ll)*($_$CIV3 * 2ll)))
+    34 |      $_$CIV3 = $_$CIV3 + 1ll;
+            } while ((unsigned long long) $_$CIV3 < 55242880ull);    /* ~4 */
+          lab_6:
+            goto lab_10;
+          lab_9:
+          lab_13:
+            if (!1) goto lab_12;
+            $_$CIV1 = 0ll;
+            do {   /* id=3 guarded */ /* ~11 */ 
+              /* region = 28 */
+              /* bump-normalized */
+              A[$_$CIV1] = _fmadd@69( 1.0000000000000000E+001,C[$_$CIV1],B[$_$CIV1]);
+              $_$CIV1 = $_$CIV1 + 1ll;
+            } while ((unsigned long long) $_$CIV1 < 110485760ull);    /* ~11 */
+          lab_12:
+          lab_10:
+    39 |    gettimeofday(&stop_time,NULL);
+    43 |    printf("Elapsed Time (s): %8.4f/n",(double) (stop_time.tv_usec - start_time.tv_usec < 0ll ? (stop_time.tv_sec - start_time.tv_sec) - 1ll : stop_time.tv_sec - start_time.tv_sec) + (double) (stop_time.tv_usec - start_time.tv_usec < 0ll ? 1000000ll + (stop_time.tv_usec - start_time.tv_usec) : stop_time.tv_usec - start_time.tv_usec) /  1.0000000000000000E+006);
+    47 |    free(A)
+    48 |    free(B)
+    49 |    free(C)
+    51 |    printf("/n---------------------------/n");
+    52 |    printf("__SUCCESS__/n");
+    53 |    printf("---------------------------/n");
+    54 |    printf("N                 = %d/n",110485760);
+    55 |    printf("---------------------------/n/n");
+    57 |    rstr = 0;
+            return rstr;
+    58 |  } /* function */ 
+
+
+
+Source        Source        Loop Id       Action / Information                                      
+File          Line                                                                                  
+----------    ----------    ----------    ----------------------------------------------------------
+         0            21             2    Loop with nest-level 0 and iteration count 110485760 
+                                          was SIMD vectorized.
+         0            21             4    Loop was not SIMD vectorized because a data 
+                                          dependence  prevents SIMD  vectorization.
+         0            34             1    Loop with nest-level 0 and iteration count 110485760 
+                                          was SIMD vectorized.
+         0            34             3    Loop was not SIMD vectorized because a data 
+                                          dependence  prevents SIMD  vectorization.
+         0            34             3    Loop was not SIMD vectorized because a data 
+                                          dependence  prevents SIMD  vectorization.
+
+    10 |  int main()
+    15 |  {
+            A = malloc(883886080ull);
+    16 |    B = malloc(883886080ull);
+    17 |    C = malloc(883886080ull);
+            if (!1) goto lab_18;
+            if (!((long long) C + 883886072ll < (long long) A | (long long) A + 883886072ll < (long long) C)) goto lab_14;
+    21 |    if (!1) goto lab_3;
+            $_$CIV2 = (long long) 0;
+            do {   /* id=2 guarded */ /* ~1 */ 
+              /* region = 26 */
+              /* bump-normalized */
+              /* independent */
+    23 |      __vec_be_xstd2(<double2>(1.000,1.000),0,((char *)A + (8ll)*($_$CIV2 * 2ll)))
+    24 |      __vec_be_xstd2(<double2>(2.000,2.000),0,((char *)C + (8ll)*($_$CIV2 * 2ll)))
+    21 |      $_$CIV2 = $_$CIV2 + 1ll;
+            } while ((unsigned long long) $_$CIV2 < 55242880ull);    /* ~1 */
+          lab_3:
+            goto lab_15;
+          lab_14:
+          lab_18:
+            if (!1) goto lab_17;
+            $_$CIV0 = 0ll;
+            do {   /* id=4 guarded */ /* ~16 */ 
+              /* region = 29 */
+              /* bump-normalized */
+    23 |      A[$_$CIV0] =  1.0000000000000000E+000;
+    24 |      C[$_$CIV0] =  2.0000000000000000E+000;
+    21 |      $_$CIV0 = $_$CIV0 + 1ll;
+            } while ((unsigned long long) $_$CIV0 < 110485760ull);    /* ~16 */
+          lab_17:
+          lab_15:
+    27 |    gettimeofday(&start_time,NULL);
+            if (!1) goto lab_13;
+            if (!(((long long) C + 883886072ll < (long long) A | (long long) A + 883886072ll < (long long) C) & ((long long) B + 883886072ll < (long long) A | (long long) A + 883886072ll < (long long) B))) goto lab_9;
+    34 |    if (!1) goto lab_6;
+            $_$CIV3 = (long long) 0;
+            do {   /* id=1 guarded */ /* ~4 */ 
+              /* region = 27 */
+              /* bump-normalized */
+              /* independent */
+    36 |      $_$vOpnd.slp0 = __vec_be_xld2(0,((char *)B + (8ll)*($_$CIV3 * 2ll)));
+              $_$vOpnd.slp1 = __vec_be_xld2(0,((char *)C + (8ll)*($_$CIV3 * 2ll)));
+              $_$vTemp2 = (<double2>) vec_madd(<double2>(10.000,10.000),$_$vOpnd.slp1,$_$vOpnd.slp0);
+              __vec_be_xstd2($_$vTemp2,0,((char *)A + (8ll)*($_$CIV3 * 2ll)))
+    34 |      $_$CIV3 = $_$CIV3 + 1ll;
+            } while ((unsigned long long) $_$CIV3 < 55242880ull);    /* ~4 */
+          lab_6:
+            goto lab_10;
+          lab_9:
+          lab_13:
+            if (!1) goto lab_12;
+            $_$CIV1 = 0ll;
+            do {   /* id=3 guarded */ /* ~11 */ 
+              /* region = 28 */
+              /* bump-normalized */
+    36 |      $_$csx0 = _fmadd@69( 1.0000000000000000E+001,C[$_$CIV1],B[$_$CIV1]);
+    34 |      A[$_$CIV1] = $_$csx0;
+              $_$CIV1 = $_$CIV1 + 1ll;
+            } while ((unsigned long long) $_$CIV1 < 110485760ull);    /* ~11 */
+          lab_12:
+          lab_10:
+    39 |    gettimeofday(&stop_time,NULL);
+    43 |    printf("Elapsed Time (s): %8.4f/n",(double) (stop_time.tv_usec - start_time.tv_usec < 0ll ? (stop_time.tv_sec - start_time.tv_sec) - 1ll : stop_time.tv_sec - start_time.tv_sec) + (double) (stop_time.tv_usec - start_time.tv_usec < 0ll ? 1000000ll + (stop_time.tv_usec - start_time.tv_usec) : stop_time.tv_usec - start_time.tv_usec) /  1.0000000000000000E+006);
+    47 |    free(A)
+    48 |    free(B)
+    49 |    free(C)
+    51 |    printf("/n---------------------------/n");
+    52 |    printf("__SUCCESS__/n");
+    53 |    printf("---------------------------/n");
+    54 |    printf("N                 = %d/n",110485760);
+    55 |    printf("---------------------------/n/n");
+    57 |    rstr = 0;
+            return rstr;
+    58 |  } /* function */ 
+
+
